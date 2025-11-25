@@ -4,19 +4,47 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>עדי</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style>
+        img.gallery{
+            width:150px;
+            height:75px;
+        }
+    </style>
 </head>
-<body>
-    <h1>Master start</h1>
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
-    </form>
-        <h1>Master end</h1>
+<body dir="rtl" style="background-color: lightcyan">
+    <center>
+        <table border="1" style ="width: 90%; height:600px">
+            <tr style ="height:60px">
+                <td style="text-align:center" colspan="2">
+                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">My Project</font>
+                </td>
+            </tr>
+           <tr style ="height:60px">
+               <td>
+                     <center>
+                   <a href="login.aspx">
+                       <img src="imges/login.png" img class="gallery" /></a>
+                   <a href="home.aspx">
+                       <img src="imges/home.png" img class="gallery"/></a>
+                   <a href="harshama.aspx">
+                       <img src="imges/harshama.png" img class="gallery" /></a>
+                         </center>
+
+               </td>
+           </tr>
+            <tr style="center">
+
+     <td style="vertical-align: top;">
+        <center>
+             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+                </center>
+                 </td>
+            </tr>
+        </table>
+    </center>
 </body>
 </html>
