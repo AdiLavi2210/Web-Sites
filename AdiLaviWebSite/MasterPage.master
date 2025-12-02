@@ -8,25 +8,20 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
-        /* CSS לסרגל הניווט - הגדלת התמונות ל-150px והפיכתן לגוש */
         img.gallery{
             width: 150px; 
             height: 150px;
-            /* הסרת המרווחים האופקיים כדי שיתאימו לטור צר */
             margin: 10px 0; 
-            /* חשוב: הופך את התמונה לבלוק כדי שכל אחת תתפוס שורה בטור הניווט */
             display: block; 
         }
-        /* הגדרת רוחב לטור הצדדי */
         .navigation-column {
-            width: 180px; /* רוחב קבוע לטור הניווט */
+            width: 180px; 
             vertical-align: top;
             padding: 10px;
-            background-color: #f0f0f0; /* רקע קל לטור הניווט */
+            background-color: #f0f0f0; 
         }
-        /* הגדרת רוחב לטור התוכן הראשי */
         .content-column {
-            width: auto; /* תופס את שאר הרוחב */
+            width: auto; 
             vertical-align: top;
             padding: 10px;
         }
@@ -38,7 +33,7 @@
             
             <tr style ="height:80px">
                 <td style="text-align:center" colspan="2">
-                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">אתר הצליאק הרשמי של ישראל </font>
+                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">האתר של עדי </font>
                 </td>
             </tr>
             
