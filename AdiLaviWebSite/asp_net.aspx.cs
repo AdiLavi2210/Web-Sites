@@ -22,23 +22,23 @@ public partial class asp_net : System.Web.UI.Page
             {
                 if (i == 0 && j == 0)
                 {
-                    strkefel += "<td style='background:#ffb6c1; border:1px solid black; width:40px; height:40px;'>×</td>";
+                    strkefel += "<td style='background:red; border:1px solid black; width:40px; height:40px;'>×</td>";
                 }
                 else if (i == 0) 
                 {
-                    strkefel += "<td style='background:#add8e6; border:1px solid black; font-weight:bold; width:40px; height:40px;'>";
+                    strkefel += "<td style='background:lightblue; border:1px solid black; font-weight:bold; width:40px; height:40px;'>";
                     strkefel += j;
                     strkefel += "</td>";
                 }
                 else if (j == 0)  
                 {
-                    strkefel += "<td style='background:#98fb98; border:1px solid black; font-weight:bold; width:40px; height:40px;'>";
+                    strkefel += "<td style='background:lightgreen; border:1px solid black; font-weight:bold; width:40px; height:40px;'>";
                     strkefel += i;
                     strkefel += "</td>";
                 }
                 else 
                 {
-                    strkefel += "<td style='background:#fffaf0; border:1px solid black; width:40px; height:40px;'>";
+                    strkefel += "<td style='background:white; border:1px solid black; width:40px; height:40px;'>";
                     strkefel += i * j;
                     strkefel += "</td>";
                 }
