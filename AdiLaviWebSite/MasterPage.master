@@ -8,41 +8,62 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
+        /* CSS לסרגל הניווט - הגדלת התמונות ל-150px והפיכתן לגוש */
         img.gallery{
-            width:150px;
-            height:75px;
+            width: 150px; 
+            height: 150px;
+            /* הסרת המרווחים האופקיים כדי שיתאימו לטור צר */
+            margin: 10px 0; 
+            /* חשוב: הופך את התמונה לבלוק כדי שכל אחת תתפוס שורה בטור הניווט */
+            display: block; 
+        }
+        /* הגדרת רוחב לטור הצדדי */
+        .navigation-column {
+            width: 180px; /* רוחב קבוע לטור הניווט */
+            vertical-align: top;
+            padding: 10px;
+            background-color: #f0f0f0; /* רקע קל לטור הניווט */
+        }
+        /* הגדרת רוחב לטור התוכן הראשי */
+        .content-column {
+            width: auto; /* תופס את שאר הרוחב */
+            vertical-align: top;
+            padding: 10px;
         }
     </style>
 </head>
-<body dir="rtl" style="background-color: lightcyan">
+<body dir="rtl" style="background-color: whitesmoke">
     <center>
-        <table border="1" style ="width: 90%; height:600px">
-            <tr style ="height:60px">
+        <table border="1" style ="width: 100%; border-collapse: collapse;">
+            
+            <tr style ="height:80px">
                 <td style="text-align:center" colspan="2">
-                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">My Project</font>
+                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">אתר הצליאק הרשמי של ישראל </font>
                 </td>
             </tr>
-           <tr style ="height:60px">
-               <td>
-                     <center>
-                   <a href="login.aspx">
-                       <img src="imges/login.png" img class="gallery" /></a>
-                   <a href="home.aspx">
-                       <img src="imges/home.png" img class="gallery"/></a>
-                   <a href="harshama.aspx">
-                       <img src="imges/harshama.png" img class="gallery" /></a>
-                         </center>
-
-               </td>
-           </tr>
-            <tr style="center">
-
-     <td style="vertical-align: top;">
-        <center>
-             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-                </center>
-                 </td>
+            
+            <tr>
+                
+                <td class="navigation-column">
+                    <center>
+                        <a href="login.aspx"><img src="imges/login.png" class="gallery" alt="התחברות"/></a>
+                        <a href="home.aspx"><img src="imges/home.png" class="gallery" alt="דף בית"/></a>
+                        <a href="harshama.aspx"><img src="imges/harshama.png" class="gallery" alt="הרשמה"/></a>
+                        <a href="aodot.aspx"><img src="imges/aodot.png" class="gallery" alt="אודות"/></a>
+                        <a href="exit.aspx"><img src="imges/exit.png" class="gallery" alt="יציאה"/></a>
+                        <a href="galeria.aspx"><img src="imges/galeria.png" class="gallery" alt="גלריה"/></a>
+                        <a href="menahel.aspx"><img src="imges/menahel.png" class="gallery" alt="מנהל"/></a>
+                        <a href="search.aspx"><img src="imges/search.png" class="gallery" alt="חיפוש"/></a>
+                        <a href="update.aspx"><img src="imges/update.png" class="gallery" alt="עדכון"/></a>
+                    </center>
+                </td>
+                
+                <td class="content-column">
+                    <center>
+                         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                         </asp:ContentPlaceHolder>
+                    </center>
+                </td>
             </tr>
         </table>
     </center>
