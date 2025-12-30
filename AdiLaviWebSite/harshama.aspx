@@ -10,7 +10,10 @@
         שם מלא: <input type="text" name="fullname" id="fullname" placeholder="הכנס שם מלא" required>
         <br /><br />
 
-        כתובת מייל: <input type="email" name="email" id="email" placeholder="example@mail.com" required>
+        כתובת מייל: <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
+        <br /><br />
+
+         סיסמה: <input type="pasword" name="email" id="pasword" placeholder="הכנס סיסמה" required>
         <br /><br />
 
         גיל: <input type="number" name="age" id="age" placeholder="הכנס גיל" min="1" max="120" required>

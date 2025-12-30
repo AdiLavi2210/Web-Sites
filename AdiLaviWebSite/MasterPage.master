@@ -33,7 +33,7 @@
             
             <tr style ="height:80px">
                 <td style="text-align:center" colspan="2">
-                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">האתר של עדי </font>
+                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">האתר לאוהבי הטיולים לחו"ל </font>
                 </td>
             </tr>
             
@@ -41,7 +41,7 @@
                 
                 <td class="navigation-column">
                     <center>
-                        <a href="login.aspx"><img src="imges/login.png" class="gallery" alt="התחברות"/></a>
+                        <a href="login.aspx"><img src="imges/login1.png" class="gallery" alt="כניסה"/></a>
                         <a href="home.aspx"><img src="imges/home.png" class="gallery" alt="דף בית"/></a>
                         <a href="harshama.aspx"><img src="imges/harshama.png" class="gallery" alt="הרשמה"/></a>
                         <a href="aodot.aspx"><img src="imges/aodot.png" class="gallery" alt="אודות"/></a>
