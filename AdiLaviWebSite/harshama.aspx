@@ -13,7 +13,7 @@
         כתובת מייל: <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
         <br /><br />
 
-         סיסמה: <input type="pasword" name="email" id="pasword" placeholder="הכנס סיסמה" required>
+         סיסמה: <input type="pasword" name="pasword" id="pasword" placeholder="הכנס סיסמה" required>
         <br /><br />
 
         גיל: <input type="number" name="age" id="age" placeholder="הכנס גיל" min="1" max="120" required>
@@ -28,10 +28,20 @@
 
         הערות נוספות:
         <br />
-        <textarea rows="5" cols="30" name="notes" id="notes" placeholder="הכנס הערות"></textarea>
+        <textarea rows="5" cols="30" name="text" id="text" placeholder="הכנס הערות"></textarea>
         <br /><br />
 
         <input id="Submit1" type="submit" value="שלח" />
     </form>
+
+    <br />
+    <% = name %>     <br />
+    <% = email %>    <br />
+    <%  = pasword %>    <br />
+    <% = age %>    <br />
+    <%  = gender %>    <br />
+    <%  = textareStr %>    <br />
+
+
 </asp:Content>
 

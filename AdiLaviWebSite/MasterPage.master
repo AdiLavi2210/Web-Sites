@@ -41,15 +41,15 @@
                 
                 <td class="navigation-column">
                     <center>
-                        <a href="login.aspx"><img src="imges/login1.png" class="gallery" alt="כניסה"/></a>
-                        <a href="home.aspx"><img src="imges/home.png" class="gallery" alt="דף בית"/></a>
-                        <a href="harshama.aspx"><img src="imges/harshama.png" class="gallery" alt="הרשמה"/></a>
-                        <a href="aodot.aspx"><img src="imges/aodot.png" class="gallery" alt="אודות"/></a>
-                        <a href="exit.aspx"><img src="imges/exit.png" class="gallery" alt="יציאה"/></a>
-                        <a href="galeria.aspx"><img src="imges/galeria.png" class="gallery" alt="גלריה"/></a>
-                        <a href="menahel.aspx"><img src="imges/menahel.png" class="gallery" alt="מנהל"/></a>
-                        <a href="search.aspx"><img src="imges/search.png" class="gallery" alt="חיפוש"/></a>
-                        <a href="update.aspx"><img src="imges/update.png" class="gallery" alt="עדכון"/></a>
+                        <a href="login.aspx"><img src="imges/login11.png" class="gallery" alt="כניסה"/></a>
+                        <a href="home.aspx"><img src="imges/home1.png" class="gallery" alt="דף בית"/></a>
+                        <a href="harshama.aspx"><img src="imges/harshama1.png" class="gallery" alt="הרשמה"/></a>
+                        <a href="aodot.aspx"><img src="imges/aodot1.png" class="gallery" alt="אודות"/></a>
+                        <a href="exit.aspx"><img src="imges/exit1.png" class="gallery" alt="יציאה"/></a>
+                        <a href="galeria.aspx"><img src="imges/galeria1.png" class="gallery" alt="גלריה"/></a>
+                        <a href="menahel.aspx"><img src="imges/menahel1.png" class="gallery" alt="מנהל"/></a>
+                        <a href="search.aspx"><img src="imges/search1.png" class="gallery" alt="חיפוש"/></a>
+                        <a href="update.aspx"><img src="imges/update1.png" class="gallery" alt="עדכון"/></a>
                     </center>
                 </td>
                 
