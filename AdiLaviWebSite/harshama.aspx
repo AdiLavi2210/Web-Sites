@@ -41,6 +41,7 @@
     <% = age %>    <br />
     <%  = gender %>    <br />
     <%  = textareStr %>    <br />
+    <%  = goodluck %>    <br />
 
 
 </asp:Content>
