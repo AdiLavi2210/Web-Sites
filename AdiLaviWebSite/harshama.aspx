@@ -13,7 +13,7 @@
         כתובת מייל: <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
         <br /><br />
 
-         סיסמה: <input type="pasword" name="pasword" id="pasword" placeholder="הכנס סיסמה" required>
+         סיסמה: <input type="password" name="pasword" id="pasword" placeholder="הכנס סיסמה" required>
         <br /><br />
 
         גיל: <input type="number" name="age" id="age" placeholder="הכנס גיל" min="1" max="120" required>
@@ -35,12 +35,7 @@
     </form>
 
     <br />
-    <% = name %>     <br />
-    <% = email %>    <br />
-    <%  = pasword %>    <br />
-    <% = age %>    <br />
-    <%  = gender %>    <br />
-    <%  = textareStr %>    <br />
+   
     <%  = goodluck %>    <br />
 
 

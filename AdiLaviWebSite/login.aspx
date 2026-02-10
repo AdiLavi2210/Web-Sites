@@ -4,13 +4,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
   <font style ="color: black; font-size:45px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" >כניסה</font>
-    כתובת מייל: <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
-<br /><br />
+  <form name="formPage" method="post" runat="server">
 
- סיסמה: <input type="pasword" name="pasword" id="pasword" placeholder="הכנס סיסמה" required>
-<br /><br />
+כתובת מייל: <input type="email" name="email" id="email" placeholder="example@gmail.com" required> 
+      <br /><br /> 
+      סיסמה: <input type="password" name="password" id="password" placeholder="הכנס סיסמה" required> 
+      <br /><br />
+      <input id="Submit2" type="submit" value="שלח" /> <br /><br />
+</form>
 
-    <% = email %>    <br />
-    <%  = pasword %>    <br />
+<br />
+
+
+    <%= stResult %>    <br />
+    
 </asp:Content>
 
