@@ -50,6 +50,8 @@
                         <a href="menahel.aspx"><img src="imges/menahel1.png" class="gallery" alt="מנהל"/></a>
                         <a href="search.aspx"><img src="imges/search1.png" class="gallery" alt="חיפוש"/></a>
                         <a href="update.aspx"><img src="imges/update1.png" class="gallery" alt="עדכון"/></a>
+                      <a href="AddItem.aspx"><img src="imges/add_icon.png" class="gallery" alt="הוספת פריט"/></a>
+                        <a href="ShowItems.aspx"><img src="imges/items_icon.png" class="gallery" alt="הצגת פריטים"/></a>
                     </center>
                 </td>
                 
