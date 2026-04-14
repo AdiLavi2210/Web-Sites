@@ -23,8 +23,8 @@ public partial class menahel : System.Web.UI.Page
 
         // אוסף את כל הרשומות
         string sql = "SELECT * FROM tUsers WHERE " +
-        "email = N'" + email + "'  AND " +
-        "fullname = N'" + fullname + "'";
+        "email Like N'%" + email + "%'  AND " +
+        "fullname Like N'%" + fullname + "%'";
 
         DataTable dt = MyAdoHelper.ExecuteDataTable(sql);
 

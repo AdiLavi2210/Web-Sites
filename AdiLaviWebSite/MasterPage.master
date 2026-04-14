@@ -1,4 +1,4 @@
-﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -25,6 +25,12 @@
             vertical-align: top;
             padding: 10px;
         }
+        .user-greeting {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
     </style>
 </head>
 <body dir="rtl" style="background-color: whitesmoke">
@@ -38,9 +44,12 @@
             </tr>
             
             <tr>
-                
                 <td class="navigation-column">
                     <center>
+                        <div class="user-greeting"> 
+                            שלום <%=Session["email"] %>
+                        </div>
+
                         <a href="login.aspx"><img src="imges/login11.png" class="gallery" alt="כניסה"/></a>
                         <a href="home.aspx"><img src="imges/home1.png" class="gallery" alt="דף בית"/></a>
                         <a href="harshama.aspx"><img src="imges/harshama1.png" class="gallery" alt="הרשמה"/></a>
@@ -50,7 +59,7 @@
                         <a href="menahel.aspx"><img src="imges/menahel1.png" class="gallery" alt="מנהל"/></a>
                         <a href="search.aspx"><img src="imges/search1.png" class="gallery" alt="חיפוש"/></a>
                         <a href="update.aspx"><img src="imges/update1.png" class="gallery" alt="עדכון"/></a>
-                      <a href="AddItem.aspx"><img src="imges/add_icon.png" class="gallery" alt="הוספת פריט"/></a>
+                        <a href="AddItem.aspx"><img src="imges/add_icon.png" class="gallery" alt="הוספת פריט"/></a>
                         <a href="ShowItems.aspx"><img src="imges/items_icon.png" class="gallery" alt="הצגת פריטים"/></a>
                     </center>
                 </td>
