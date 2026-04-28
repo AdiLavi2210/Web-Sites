@@ -19,7 +19,8 @@ public partial class _Default : System.Web.UI.Page
 
             if (email == "adiMenahelet2210@gmail.com" && password == "adi2010")
             {
-                Session["email"] = "עדי המנהלת";
+                Session["name"] = "עדי המנהלת";
+                Session["nihol"] = "ok";
                 Response.Redirect("menahel.aspx");
             }
 
@@ -31,18 +32,19 @@ public partial class _Default : System.Web.UI.Page
                     "AND pasword = N'" + password + "'";
 
 
+                
+                System.Data.DataTable dt = MyAdoHelper.ExecuteDataTable(sqlSelect);
 
-                bool userExists = MyAdoHelper.IsExist(sqlSelect);
+                if (dt.Rows.Count == 0) {
 
-                if (!userExists) { 
-
-                    stResult = "אימייל או סיסמה שגויים";
-                    Session["email"] = "משתמש רשום";
-                 }
+                    stResult = "אימייל או סיסמא שגויים";
+                    Session["name"] = "אורח";
+                }
                 else
                 { 
-                    stResult = "משתמש רשום";
-                    Session["email"] = "משתמש רשום";
+                    //stResult = "משתמש רשום";
+                    Session["ok"] = dt.Rows[0]["fullname"];
+                    Session["name"] = "משתמש רשום";
                     Response.Redirect("home.aspx");
                }
             }
