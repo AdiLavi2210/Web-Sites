@@ -1,92 +1,168 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
-
-<html>
+<html dir="rtl">
 <head runat="server">
-    <title>עדי</title>
-    <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <title>עדי - המדריך למטייל</title>
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+    
     <style>
-        img.gallery{
-            width: 150px; 
-            height: 150px;
-            margin: 10px 0; 
-            display: block; 
+        /* --- עיצוב כללי ורקע האתר --- */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* שימוש בטקסטורת מפת עולם ורקע תכלת עדין */
+            background-color: #e3f2fd; 
+           /* background-image: url('https://www.transparenttextures.com/patterns/world-map.png');*/
+            background-attachment: fixed;
         }
-        .navigation-column {
-            width: 180px; 
+
+        /* --- אנימציית המטוס הטס --- */
+        .sky-line {
+            width: 100%;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.5); /* פס שקוף למחצה */
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #bbdefb;
+        }
+        .airplane {
+            position: absolute;
+            font-size: 24px;
+            top: 5px;
+            /* אנימציה שגורמת למטוס לטוס מימין לשמאל בלופ */
+            animation: fly 20s linear infinite;
+        }
+        @keyframes fly {
+            from { right: -50px; }
+            to { right: 100%; }
+        }
+
+        /* --- שלד האתר (הטבלה המרכזית) --- */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            border-collapse: collapse;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2); /* צל עמוק שנותן מראה מודרני */
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        /* --- כותרת האתר --- */
+        .header-section {
+            background: linear-gradient(135deg, #0288d1, #26c6da); /* מעבר צבעים של ים ושמיים */
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* --- תפריט הניווט (צד ימין) --- */
+        .nav-side {
+            width: 200px;
             vertical-align: top;
-            padding: 10px;
-            background-color: #f0f0f0; 
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-left: 1px solid #eee;
         }
-        .content-column {
-            width: auto; 
-            vertical-align: top;
-            padding: 10px;
-        }
-        .user-greeting {
-            font-weight: bold;
+
+        /* --- עיצוב הכפתורים כ"כרטיסי עלייה למטוס" --- */
+        .nav-item {
+            display: block;
             margin-bottom: 15px;
-            color: #333;
-            font-family: Arial, sans-serif;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .gallery {
+            width: 150px;
+            border-radius: 8px;
+            border-right: 6px dotted #0288d1; /* קו "תלישה" של כרטיס טיסה */
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            background-color: white;
+            padding: 5px;
+        }
+        .nav-item:hover {
+            transform: scale(1.1) rotate(-2deg); /* אפקט תזוזה והטיה קלה בסיבוב */
+        }
+
+        /* --- אזור התוכן --- */
+        .content-area {
+            padding: 40px;
+            vertical-align: top;
+            min-height: 500px;
+        }
+
+        .user-info {
+            font-weight: bold;
+            color: #01579b;
+            margin-bottom: 20px;
+            font-size: 1.1em;
         }
     </style>
 </head>
-<body dir="rtl" style="background-color: whitesmoke">
-    <center>
-        <table border="1" style ="width: 100%; border-collapse: collapse;">
-            
-            <tr style ="height:80px">
-                <td style="text-align:center" colspan="2">
-                    <font style ="color: black; font-size:60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">האתר לאוהבי הטיולים לחו"ל </font>
+<body>
+    <form id="form1" runat="server">
+        
+        <!-- פס המטוס הטס -->
+        <div class="sky-line">
+            <span class="airplane">✈️</span>
+        </div>
+
+        <table class="main-container">
+            <!-- כותרת -->
+            <tr class="header-section">
+                <td colspan="2">
+                    <h1 style="margin:0; font-size:50px; letter-spacing: 2px;">עדי מסביב לעולם</h1>
+                    <p style="margin:10px 0 0 0; opacity: 0.9;">המדריך שלך לחופשה המושלמת בחו"ל</p>
                 </td>
             </tr>
-            
+
             <tr>
-                <td class="navigation-column">
+                <!-- תפריט צד -->
+                <td class="nav-side">
                     <center>
-                        <div class="user-greeting"> 
+                        <%-- הצגת שם המשתמש --%>
                         <%if (Session["nihol"] == "ok" || Session["user"] == "ok") { %>
-
-                            שלום <%=Session["name"] %>
-                         <%}%>
-                        </div>
-
-                        <a href="home.aspx"><img src="imges/home1.png" class="gallery" alt="דף בית"/></a>
-
-                        <%if (Session["nihol"] != "ok" || Session["user"] != "ok") { %>
-                            <a href="harshama.aspx"><img src="imges/harshama1.png" class="gallery" alt="הרשמה"/></a>
-                            <a href="login.aspx"><img src="imges/login11.png" class="gallery" alt="כניסה"/></a>
+                            <div class="user-info">שלום, <%=Session["name"] %> 👋</div>
                         <%}%>
 
-                        <%if (Session["nihol"] == "ok" && Session["user"] == "ok") { %>
-                            <a href="exit.aspx"><img src="imges/exit1.png" class="gallery" alt="יציאה"/></a>
-                            <a href="aodot.aspx"><img src="imges/aodot1.png" class="gallery" alt="אודות"/></a>
-                            <a href="galeria.aspx"><img src="imges/galeria1.png" class="gallery" alt="גלריה"/>
-                            <a href="search.aspx"><img src="imges/search1.png" class="gallery" alt="חיפוש"/></a>
-                            <a href="ShowItems.aspx"><img src="imges/items_icon.png" class="gallery" alt="הצגת פריטים"/></a>
+                        <%-- כפתור בית תמיד מוצג --%>
+                        <a href="home.aspx" class="nav-item"><img src="imges/home1.png" class="gallery" alt="דף בית"/></a>
 
-                            </a>
+                        <%-- הרשמה וכניסה - רק אם לא מחובר --%>
+                        <%if (Session["nihol"] != "ok" && Session["user"] != "ok") { %>
+                            <a href="harshama.aspx" class="nav-item"><img src="imges/harshama1.png" class="gallery" alt="הרשמה"/></a>
+                            <a href="login.aspx" class="nav-item"><img src="imges/login11.png" class="gallery" alt="כניסה"/></a>
                         <%}%>
 
+                        <%-- תפריט למחוברים --%>
+                        <%if (Session["nihol"] == "ok" || Session["user"] == "ok") { %>
+                            <a href="aodot.aspx" class="nav-item"><img src="imges/aodot1.png" class="gallery" alt="אודות"/></a>
+                            <a href="galeria.aspx" class="nav-item"><img src="imges/galeria1.png" class="gallery" alt="גלריה"/></a>
+                            <a href="search.aspx" class="nav-item"><img src="imges/search1.png" class="gallery" alt="חיפוש"/></a>
+                            <a href="ShowItems.aspx" class="nav-item"><img src="imges/ShowItem.png" class="gallery" alt="הצגת פריטים"/></a>
+                            <a href="exit.aspx" class="nav-item"><img src="imges/exit1.png" class="gallery" alt="יציאה"/></a>
+                        <%}%>
+
+                        <%-- תפריט מנהל --%>
                         <%if (Session["nihol"] == "ok") { %>
-                        <a href="menahel.aspx"><img src="imges/menahel1.png" class="gallery" alt="מנהל"/></a>
-                        <a href="update.aspx"><img src="imges/update1.png" class="gallery" alt="עדכון"/></a>
-                        <a href="AddItem.aspx"><img src="imges/add_icon.png" class="gallery" alt="הוספת פריט"/></a>
+                            <div style="border-top: 1px solid #ccc; margin: 15px 0; padding-top: 10px; color: #d32f2f; font-size: 14px;">ניהול מערכת</div>
+                            <a href="menahel.aspx" class="nav-item"><img src="imges/menahel1.png" class="gallery" alt="מנהל"/></a>
+                            <a href="update.aspx" class="nav-item"><img src="imges/update1.png" class="gallery" alt="עדכון"/></a>
+                            <a href="AddItem.aspx" class="nav-item"><img src="imges/AddItem.png" class="gallery" alt="הוספת פריט"/></a>
                         <%}%>
-
                     </center>
                 </td>
-                
-                <td class="content-column">
-                    <center>
-                         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-                         </asp:ContentPlaceHolder>
-                    </center>
+
+                <!-- תוכן הדף -->
+                <td class="content-area">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
                 </td>
             </tr>
         </table>
-    </center>
+    </form>
 </body>
 </html>

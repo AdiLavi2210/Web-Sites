@@ -2,21 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <font style ="color: black; font-size:45px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" >מנהל</font>
+    <div style="text-align: center; padding: 30px;">
+        <%-- כותרת דף ניהול --%>
+        <h1 style="color: #d32f2f; font-size:45px; font-family: 'Segoe UI', sans-serif; font-weight: bold;">לוח בקרה - מנהל מערכת</h1>
         
-    <form name="menahel" method="post" runat="server">
+        <div style="background-color: #fff; border-top: 5px solid #d32f2f; display: inline-block; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); min-width: 400px; text-align: right;">
+            
+            <p style="font-size: 18px; color: #333;">שלום **מנהלת האתר**, כאן תוכלי לצפות בנתוני המשתמשים ולנהל את התוכן.</p>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
 
-    שם מלא: <input type="text" name="fullname" id="fullname" placeholder="הכנס שם מלא" required>
-    <br /><br />
+            <%-- כאן יוצגו הנתונים (הטבלה שה-C# מייצר) --%>
+            <div style="overflow-x: auto;">
+                <%= st %>
+            </div>
 
-    כתובת מייל: <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
-    <br /><br />
-
- <input id="Submit1" type="submit" value="שלח" />
-
-        </form>
-    <%  = st %>    <br />
-
+        </div>
+    </div>
 </asp:Content>
-

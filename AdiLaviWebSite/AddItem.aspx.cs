@@ -7,30 +7,30 @@ using System.Web.UI.WebControls;
 
 public partial class AddItem : System.Web.UI.Page
 {
-    // משתנה להצגת הודעות בדף ה-aspx
-    public string msg = "";
+    public string msg = ""; // משתנה להצגת הודעה למשתמש
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        // בדיקה האם המשתמש לחץ על כפתור הסאבמיט (PostBack)
         if (IsPostBack)
         {
-            // 1. שליפת הנתונים מהטופס לפי ה-name של ה-input
-            string itemName = Request.Form["itemName"];
-            string itemDescription = Request.Form["itemDescription"];
-            string itemCount = Request.Form["itemCount"];
-            string itemPrice = Request.Form["itemPrice"];
+            // קליטת הנתונים מהטופס בעזרת Request.Form
+            string name = Request.Form["itemName"];
+            string description = Request.Form["itemDescription"];
+            string count = Request.Form["itemCount"];
+            string price = Request.Form["itemPrice"];
+            string continent = Request.Form["continent"]; // קליטת השדה מה-Select
 
-            // 2. בניית שאילתת ה-Insert
-            // שימי לב: אנחנו מפרטים את שמות העמודות כי ה-ID נוצר אוטומטית!
+            // בניית שאילתת ה-Insert לטבלה
+            // שימי לב לשימוש ב-N לפני מחרוזות כדי לתמוך בעברית
             string sqlInsert = "INSERT INTO tItems (itemName, itemDescription, itemCount, itemPrice) " +
-                               "VALUES (N'" + itemName + "', N'" + itemDescription + "', " +
-                               itemCount + ", " + itemPrice + ")";
+                               "VALUES (N'" + name + " (" + continent + ")', N'" + description + "', " + count + ", " + price + ")";
 
-            // 3. הרצת השאילתה מול מסד הנתונים
-            // וודאי ששם הקובץ MyDB.mdf תואם למה שיש לך ב-App_Data
+            // ביצוע השאילתה בעזרת מחלקת העזר
             MyAdoHelper.DoQuery("MyDB.mdf", sqlInsert);
 
-            // 4. עדכון הודעה למשתמש
-            msg = "הפריט '" + itemName + "' נוסף בהצלחה למערכת!";
+            // הודעת אישור
+            msg = "הפריט '" + name + "' נוסף בהצלחה למסד הנתונים! ✅";
         }
     }
 }
