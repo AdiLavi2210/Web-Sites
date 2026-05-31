@@ -3,123 +3,149 @@
 <!DOCTYPE html>
 <html dir="rtl">
 <head runat="server">
-    <title>עדי - המדריך למטייל</title>
+    <title>עדי - המדריך למטייל</title> 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     
     <style>
-        /* --- עיצוב כללי ורקע האתר --- */
+        /* עיצוב כללי ורקע האתר */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            /* שימוש בטקסטורת מפת עולם ורקע תכלת עדין */
-            background-color: #e3f2fd; 
-           /* background-image: url('https://www.transparenttextures.com/patterns/world-map.png');*/
-            background-attachment: fixed;
+            font-family: 'Segoe UI', Arial, sans-serif;  /* הפונט */
+            margin: 0; /* שוליים חיצוניים קובע שהרווח מחוץ לגבולות האלמנט יהיה אפס */
+            padding: 0; /* שוליים פנימיים קובע שהרווח בתוך האלמנט בין התוכן לגבול שלו יהיה אפס */
+
+            background-color: #e3f2fd; /* צבע הרקע */
+            background-attachment: fixed; /* נועל את תמונת הרקע במקומה כך שהיא לא תזוז בזמן הגלילה, ויוצר אפקט שהתוכן צף מעליה */
         }
 
-        /* --- אנימציית המטוס הטס --- */
+            /* --- אנימציית המטוס הטס --- */
+
+            /* הגדרת אזור המסלול שבו המטוס יטוס */
         .sky-line {
-            width: 100%;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.5); /* פס שקוף למחצה */
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid #bbdefb;
+            width: 100%; /* הפס יתפרס על פני כל רוחב המסך (100 אחוז) */
+            height: 40px; /* הגובה של הפס שבו טס המטוס יהיה 40 פיקסלים */
+            background: rgba(255, 255, 255, 0.5); /* צבע רקע לבן עם 50% שקיפות (מראה שקוף למחצה) */
+            position: relative; /* הגדרת מיקום יחסי - משמש כ"עוגן" בשביל שהמטוס שבתוכו יוכל לזוז חופשי */
+            overflow: hidden; /* כל מה שיוצא מגבולות הפס הזה (כמו המטוס כשהוא רק מתחיל לטוס מבחוץ) יהיה מוסתר */
+            border-bottom: 1px solid #bbdefb; /* קו תוחם תחתון דק בצבע תכלת עדין */
         }
+
+            /* הגדרת פריט המטוס עצמו */
         .airplane {
-            position: absolute;
-            font-size: 24px;
-            top: 5px;
-            /* אנימציה שגורמת למטוס לטוס מימין לשמאל בלופ */
-            animation: fly 20s linear infinite;
-        }
-        @keyframes fly {
-            from { right: -50px; }
-            to { right: 100%; }
+            position: absolute; /* מיקום מוחלט - מאפשר לנו להזיז את המטוס בצורה חופשית ומדויקת בתוך המסלול */
+            font-size: 24px; /* קובע את הגודל של האמוג'י של המטוס ל-24 פיקסלים */
+            top: 5px; /* מרחק של 5 פיקסלים מחלקו העליון של המסלול כדי שלא יידבק למעלה */
+            /* הפעלת האנימציה: קוראים לאנימציה fly, היא תיקח 20 שניות, במהירות אחידה (linear), ותחזור על עצמה לנצח (infinite) */
+            animation: fly 20s linear infinite; 
         }
 
-        /* --- שלד האתר (הטבלה המרכזית) --- */
+            /* הגדרת השלבים של האנימציה (איך המטוס יזוז) */
+        @keyframes fly { /*שמאפשר להגדיר שינוי של תכונות עיצוב לאורך זמן CSS3 כלי של */
+            /* נקודת ההתחלה של המטוס */
+        from { 
+            right: -50px; /* המטוס מתחיל כשהוא מוסתר מחוץ למסך בצד ימין (במרחק של מינוס 50 פיקסלים) */
+        }
+            /* נקודת הסיום של המטוס */
+        to { 
+            right: 100%; /* המטוס יטוס שמאלה עד שהוא יעבור את כל רוחב המסך (100 אחוז) ויעלם בצד שמאל */
+        }
+    }
+
+            /* שלד האתר הטבלה המרכזית */
+
+            /* הגדרת הקופסה הראשית שמחזיקה את כל האתר */
         .main-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: white;
-            border-collapse: collapse;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.2); /* צל עמוק שנותן מראה מודרני */
-            border-radius: 15px;
-            overflow: hidden;
+            width: 90%; /* הטבלה תתפוס 90 אחוז מרוחב המסך, כדי שיישאר קצת רווח יפה בצדדים */
+            max-width: 1200px; /* הגבלת רוחב מקסימלי ל-1200 פיקסלים, כדי שבמסכים ענקיים האתר לא יימתח מדי */
+            margin: 20px auto; /* מרחק של 20 פיקסלים מלמעלה ומלמטה, ו-auto שממרכז את הטבלה אוטומטית לאמצע המסך */
+            background-color: white; /* צבע רקע לבן נקי לתוכן של האתר */
+            border-collapse: collapse; /* מבטל את הרווחים המובנים בין תאי הטבלה כדי שהכל יתחבר חלק */
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2); /* צל עמוק ורך מסביב לטבלה שנותן לה מראה תלת-ממדי ומודרני */
+            border-radius: 15px; /* עיגול פינות של הטבלה ברדיוס של 15 פיקסלים למראה מעוגל ונקי */
+            overflow: hidden; /* דואג שתוכן הטבלה לא "ייצא" מהפינות המעוגלות שיוצר ה-border-radius */
         }
 
-        /* --- כותרת האתר --- */
+            /* --- כותרת האתר --- */
+
+            /* הגדרת אזור הכותרת הראשית בראש האתר */
         .header-section {
-            background: linear-gradient(135deg, #0288d1, #26c6da); /* מעבר צבעים של ים ושמיים */
-            color: white;
-            padding: 30px;
-            text-align: center;
+            background: linear-gradient(135deg, #0288d1, #26c6da); /* מעבר צבעים (גרדיאנט) בזווית של 135 מעלות מכחול ים לתכלת שמיים */
+            color: white; /* קובע שצבע הטקסט של הכותרות בתוך האזור הזה יהיה לבן */
+            padding: 30px; /* מוסיף רווח פנימי של 30 פיקסלים מכל הכיוונים כדי שהטקסט לא יידבק לקצוות הכותרת */
+            text-align: center; /* ממקם את הטקסט והכותרות בדיוק במרכז האמצעי של האזור */
         }
 
-        /* --- תפריט הניווט (צד ימין) --- */
+            /* --- תפריט הניווט (צד ימין) --- */
+
+            /* הגדרת העמודה הימנית שמשמשת כתפריט המעבר בין דפי האתר */
         .nav-side {
-            width: 200px;
-            vertical-align: top;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-left: 1px solid #eee;
+            width: 200px; /* קובע רוחב קבוע של 200 פיקסלים לעמודת התפריט */
+            vertical-align: top; /* מיישר את התוכן והכפתורים שבתוך התפריט לחלק העליון ביותר של התא */
+            padding: 20px; /* מוסיף רווח פנימי של 20 פיקסלים כדי שהכפתורים לא יידבקו לגבולות התפריט */
+            background-color: #f8f9fa; /* צבע רקע אפור בהיר מאוד ונקי בשביל להפריד את התפריט משאר הדף */
+            border-left: 1px solid #eee; /* קו הפרדה אנכי דק בצבע אפור בהיר בצד שמאל של התפריט */
         }
 
-        /* --- עיצוב הכפתורים כ"כרטיסי עלייה למטוס" --- */
+            /* --- עיצוב הכפתורים כ"כרטיסי עלייה למטוס" --- */
+
+            /* הגדרת קישורי הניווט הכלליים בתפריט */
         .nav-item {
-            display: block;
-            margin-bottom: 15px;
-            text-decoration: none;
-            transition: transform 0.3s;
+            display: block; /* הופך את הקישור מאלמנט שורתי לאלמנט בלוק, כך שכל כפתור ירד שורה ותהיה לו ישות עצמאית */
+            margin-bottom: 15px; /* יוצר רווח חיצוני של 15 פיקסלים מתחת לכל כפתור כדי שלא יידבקו אחד לשני */
+            text-decoration: none; /* מבטל את קו התחתון האוטומטי שהדפדפן שם בד"כ לקישורים */
+            transition: transform 0.3s; /* מגדיר שהאפקט הויזואלי (התזוזה) ייקח 0.3 שניות בצורה חלקה ולא יקפוץ בשנייה */
         }
+
+            /* העיצוב הספציפי של כרטיס הטיסה עבור לחצני התפריט */
         .gallery {
-            width: 150px;
-            border-radius: 8px;
-            border-right: 6px dotted #0288d1; /* קו "תלישה" של כרטיס טיסה */
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            background-color: white;
-            padding: 5px;
+            width: 150px; /* קובע רוחב קבוע של 150 פיקסלים לכרטיס הטיסה */
+            border-radius: 8px; /* מעגל את פינות הכרטיס ברדיוס עדין של 8 פיקסלים */
+            border-right: 6px dotted #0288d1; /* יוצר קו ימני עבה ומקווקו (נקודות) בצבע כחול שמדמה קו תלישה של כרטיס טיסה אמיתי */
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1); /* מוסיף צל קליל ועדין מאחורי הכרטיס כדי לתת לו מראה ריאליסטי צף */
+            background-color: white; /* צבע הרקע של הכרטיס יהיה לבן נקי כדי שהקו המקווקו והטקסט יבלטו */
+            padding: 5px; /* רווח פנימי קטן של 5 פיקסלים סביב התוכן בתוך הכרטיס */
         }
+
+            /* מה קורה כשהמשתמש מרחף עם העכבר מעל פריט בתפריט */
         .nav-item:hover {
-            transform: scale(1.1) rotate(-2deg); /* אפקט תזוזה והטיה קלה בסיבוב */
+            transform: scale(1.1) rotate(-2deg); /* מגדיל את הכרטיס ב-10 אחוז (scale 1.1) ומסובב אותו קצת שמאלה ב-2 מעלות (rotate) לאפקט דינמי */
         }
 
-        /* --- אזור התוכן --- */
+            /* --- אזור התוכן --- */
+
+            /* הגדרת החלק המרכזי של האתר שבו מוצגים הדפים השונים */
         .content-area {
-            padding: 40px;
-            vertical-align: top;
-            min-height: 500px;
+            padding: 40px; /* מוסיף רווח פנימי עשיר של 40 פיקסלים כדי שהתוכן (טבלאות/טפסים) יישב במרחב נעים לעין */
+            vertical-align: top; /* מיישר את כל התוכן שנכנס לדף אוטומטית להתחלה למעלה */
+            min-height: 500px; /* קובע גובה מינימלי של 500 פיקסלים לאזור התוכן, כדי שהאתר לא "יימעך" גם בדפים ריקים */
         }
 
+            /* הגדרת אזור הצגת שם המשתמש המחובר באתר */
         .user-info {
-            font-weight: bold;
-            color: #01579b;
-            margin-bottom: 20px;
-            font-size: 1.1em;
+            font-weight: bold; /* הופך את הטקסט של שם המשתמש למודגש (עבה) */
+            color: #01579b; /* צבע טקסט כחול כהה עמוק ומקצועי */
+            margin-bottom: 20px; /* מוסיף רווח חיצוני של 20 פיקסלים מתחת לשם המשתמש כדי להרחיק אותו מהתוכן שמתחתיו */
+            font-size: 1.1em; /* מגדיל את גודל הגופן ב-10 אחוזים יותר מגודל ברירת המחדל של הדף */
         }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server"> <% /* פתיחת הטופס הראשי באתר, runat="server" מאפשר להשתמש בפקדי שרת של ASP.NET */ %>
         
         <!-- פס המטוס הטס -->
-        <div class="sky-line">
-            <span class="airplane">✈️</span>
-        </div>
+            <div class="sky-line"> <% /* קופסת דיב (div) מעוצבת לפס השמיים העליון שבו יטוס המטוס */ %>
+            <span class="airplane">✈️</span> <% /* תגית span שמחזיקה את האמוג'י של המטוס לצורך הזזה ב-CSS */ %>
+            </div> <% /* סגירת קופסת השמיים */ %>
 
-        <table class="main-container">
-            <!-- כותרת -->
-            <tr class="header-section">
-                <td colspan="2">
-                    <h1 style="margin:0; font-size:50px; letter-spacing: 2px;">עדי מסביב לעולם</h1>
-                    <p style="margin:10px 0 0 0; opacity: 0.9;">המדריך שלך לחופשה המושלמת בחו"ל</p>
-                </td>
-            </tr>
+     <table class="main-container"> <% /* פתיחת טבלת המבנה הראשית של האתר ששומרת על עיצוב אחיד וממורכז */ %>
+         <tr class="header-section"> <% /* יצירת שורת הכותרת העליונה של האתר */ %>
+             <td colspan="2"> <% /* מיזוג של שני תאים לתא אחד רחב כדי שהכותרת תתפרס על כל רוחב הטבלה */ %>
+                 <h1 style="margin:0; font-size:50px; letter-spacing: 2px;">עדי מסביב לעולם</h1> <% /* כותרת ראשית בגודל 50 פיקסלים ומרווח של 2 פיקסלים בין האותיות */ %>
+                 <p style="margin:10px 0 0 0; opacity: 0.9;">המדריך שלך לחופשה המושלמת בחו"ל</p> <% /* פסקת הסבר קטנה באטימות של 90% למראה מודרני */ %>
+             </td> <% /* סגירת תא הכותרת */ %>
+         </tr> <% /* סגירת שורת הכותרת העליונה */ %>
 
-            <tr>
+         <tr> <% /* פתיחת שורה חדשה בטבלה שתכיל את התפריט מצד אחד ואת התוכן הדינמי מצד שני */ %>
+            
                 <!-- תפריט צד -->
                 <td class="nav-side">
                     <center>
@@ -141,7 +167,6 @@
                         <%if (Session["nihol"] == "ok" || Session["user"] == "ok") { %>
                             <a href="aodot.aspx" class="nav-item"><img src="imges/aodot1.png" class="gallery" alt="אודות"/></a>
                             <a href="galeria.aspx" class="nav-item"><img src="imges/galeria1.png" class="gallery" alt="גלריה"/></a>
-                            <a href="search.aspx" class="nav-item"><img src="imges/search1.png" class="gallery" alt="חיפוש"/></a>
                             <a href="ShowItems.aspx" class="nav-item"><img src="imges/ShowItem.png" class="gallery" alt="הצגת פריטים"/></a>
                             <a href="exit.aspx" class="nav-item"><img src="imges/exit1.png" class="gallery" alt="יציאה"/></a>
                         <%}%>
@@ -150,7 +175,6 @@
                         <%if (Session["nihol"] == "ok") { %>
                             <div style="border-top: 1px solid #ccc; margin: 15px 0; padding-top: 10px; color: #d32f2f; font-size: 14px;">ניהול מערכת</div>
                             <a href="menahel.aspx" class="nav-item"><img src="imges/menahel1.png" class="gallery" alt="מנהל"/></a>
-                            <a href="update.aspx" class="nav-item"><img src="imges/update1.png" class="gallery" alt="עדכון"/></a>
                             <a href="AddItem.aspx" class="nav-item"><img src="imges/AddItem.png" class="gallery" alt="הוספת פריט"/></a>
                         <%}%>
                     </center>
