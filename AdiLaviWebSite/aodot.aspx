@@ -17,7 +17,7 @@
                 <%-- מסגרת מעוצבת לתמונה --%>
                 <div style="width: 250px; height: 250px; border-radius: 50%; border: 8px solid #26c6da; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"> <% /* מסגרת התמונה: רוחב וגובה קבועים של 250px, עיגול מושלם (border-radius: 50%), מסגרת עבה בצבע תכלת, הסתרת חריגות (overflow: hidden) כדי שהתמונה תיחתך לצורת עיגול, וצל קטן */ %>
                     <%-- כאן תשימי את התמונה שלך - פשוט תחליפי את ה-SRC לשם הקובץ של התמונה שלך --%>
-                    <img src="imges/me.jpg" alt="עדי" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/250?text=Your+Photo';"> <% /* תמונת הפרופיל: נמתחת לכל אורך ורוחב המסגרת (100%), שומרת על פרופורציות בלי להתעוות (object-fit: cover), ומכילה אירוע onerror שמציג תמונת ברירת מחדל זמנית אם הקובץ imges/me.jpg לא נמצא */ %>
+                    <img src="imges/me.png" alt="עדי" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/250?text=Your+Photo';"> <% /* תמונת הפרופיל: נמתחת לכל אורך ורוחב המסגרת (100%), שומרת על פרופורציות בלי להתעוות (object-fit: cover), ומכילה אירוע onerror שמציג תמונת ברירת מחדל זמנית אם הקובץ imges/me.jpg לא נמצא */ %>
                 </div> <% /* סגירת תיבת מסגרת התמונה העגולה */ %>
                 <%-- אלמנט עיצובי של מטוס קטן ליד התמונה --%>
                 <div style="position: absolute; bottom: 10px; right: 10px; background: white; border-radius: 50%; padding: 10px; font-size: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">🛫</div> <% /* תיבת אימוג'י המטוס: ממוקמת במיקום מוחלט (position: absolute) בפינה הימנית התחתונה של התמונה, עם רקע לבן, עיגול מושלם, מרווח פנימי, גודל גופן 25px וצל עדין */ %>

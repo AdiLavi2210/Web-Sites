@@ -1,6 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AddItem.aspx.cs" Inherits="AddItem" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    
+    <script type="text/javascript"> <% /* פתיחת תגית סקריפט לכתיבת קוד JavaScript שירוץ בצד הלקוח (בדפדפן) */ %>
+        function validateForm() { <% /* הגדרת פונקציה בשם validateForm שתבצע את בדיקות תקינות הקלט */ %>
+
+            var name = document.getElementsByName("itemName")[0].value; <% /* יצירת משתנה ושליפת הטקסט שהוקלד בשדה של שם הפריט לפי ה-name שלו */ %>
+            var description = document.getElementsByName("itemDescription")[0].value; <% /* יצירת משתנה ושליפת הטקסט שהוקלד בתיבת התיאור הקצר */ %>
+            var price = document.getElementsByName("itemPrice")[0].value; <% /* יצירת משתנה ושליפת המספר שהוקלד בשדה של המחיר */ %>
+
+            // 1. בדיקת אורך השם (חוסם הכנסת אות בודדת או שתיים)
+            if (name.trim().length < 3) { <% /* בדיקה האם אורך שם היעד או הפריט קצר מ-3 תווים (מונע הכנסת אותיות בודדות סתמיות) */ %>
+                alert("שם היעד או הפריט קצר מדי! בבקשה תכתבי שם הגיוני (לפחות 3 אותיות)."); <% /* הקפצת הודעת אזהרה למשתמש שהשם קצר מדי */ %>
+                return false; <% /* החזרת ערך שקרי (false) כדי לעצור את הפעולה ולא להמשיך לשרת */ %>
+            } <% /* סגירת בלוק התנאי של בדיקת אורך השם */ %>
+
+            // 2. בדיקת אורך התיאור
+            if (description.trim().length < 4) { <% /* בדיקה האם אורך התיאור קטן מ-4 תווים כדי לוודא שלא הוקלד טקסט קצר או סתמי מדי */ %>
+                alert("התיאור קצר מדי! בבקשה תכתבי לפחות משפט קטן על היעד."); <% /* הקפצת הודעת אזהרה שדורשת מהמשתמש להרחיב את התיאור */ %>
+                return false; <% /* עצירת שליחת הטופס לשרת בעזרת החזרת false */ %>
+            } <% /* סגירת בלוק התנאי של בדיקת אורך התיאור */ %>
+
+            // 3. בדיקת מחיר הגיוני (חוסם 0, מספרים שליליים, או מחירים של שקלים בודדים)
+            if (price == "" || parseFloat(price) < 5) { <% /* בדיקה האם שדה המחיר ריק או שהערך המספרי שלו קטן מ-5 שקלים (מונע מחיר לא הגיוני של 1 או 2 שקלים) */ %>
+                alert("המחיר לא הגיוני! בבקשה תכתבי מחיר של לפחות 5 שקלים."); <% /* הקפצת הודעת אזהרה שהמחיר שהוכנס נמוך מדי */ %>
+                return false; <% /* עצירת שליחת הטופס והזנת הנתונים למסד הנתונים על ידי החזרת false */ %>
+            } <% /* סגירת בלוק התנאי של בדיקת תקינות המחיר */ %>
+
+            return true; <% /* החזרת ערך אמת (true) במידה וכל הבדיקות עברו בהצלחה, מה שיאפשר לטופס להישלח לשרת */ %>
+        } <% /* סגירת פונקציית ה-JavaScript */ %>
+    </script> <% /* תגית סגירה עבור קוד ה-JavaScript */ %>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -44,13 +74,13 @@
             </div> <% /* סגירת תיבת חצי השורה הימני (שדה המחיר) */ %>
         </div> <% /* סגירת תיבת ה-Flexbox שסידרה את הכמות והמחיר זה לצד זה */ %>
 
-        <%-- שדה בחירה מרובה (Checkbox) חובה לבגרות! --%>
         <div style="margin: 10px 0 20px 0; background-color: #f1f8ff; padding: 10px; border-radius: 8px;"> <% /* תיבת עטיפה קטנה עבור תיבת הסימון: בעלת רקע כחלחל בהיר, מרווח פנימי ופינות עגולות */ %>
             <input type="checkbox" name="isEssential" value="yes" id="essential" /> <% /* תיבת סימון (type="checkbox") עם שם משתנה לקוד, ערך שיישלח לשרת אם היא מסומנת (value="yes") ותעודה מזהה (id) לקשר אותה לתווית */ %>
             <label for="essential" style="color: #01579b; cursor: pointer;"> האם זהו פריט חובה לטיסה?</label> <% /* תווית עבור תיבת הסימון המקושרת אליה באמצעות תכונת for הזהה ל-id של הצ'קבוקס, משנה את העכבר ליד (cursor: pointer) */ %>
         </div> <% /* סגירת תיבת עטיפת ה-Checkbox */ %>
 
-        <input type="submit" name="submit" value="הוסף פריט לרשימה ✨"  <% /* כפתור שליחה מסוג submit עם שם וטקסט שמוצג על פניו */ %>
+        <%-- חיבור הפונקציה ישירות בלחיצה (onclick) כדי לעקוף את בעיית ה-Master Page --%>
+        <input type="submit" name="submit" value="הוסף פריט לרשימה ✨" onclick="return validateForm();" <% /* כפתור שליחה מסוג submit עם שם, טקסט, ואירוע לחיצה (onclick) שמפעיל את ה-JavaScript ומחליט אם לשלוח לפי התוצאה */ %>
                style="width: 100%; background: linear-gradient(135deg, #0288d1, #26c6da); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 18px; cursor: pointer; font-weight: bold;" /> <% /* עיצוב כפתור: רוחב מלא, רקע מדורג, טקסט לבן, ללא מסגרת, מרווח פנימי 15px, פינות עגולות, גודל גופן 18px ועכבר הופך ליד */ %>
     </div> <% /* סגירת תיבת הטופס הלבנה הגדולה */ %>
 

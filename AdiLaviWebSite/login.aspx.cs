@@ -18,14 +18,14 @@ public partial class _Default : System.Web.UI.Page
             password = Request.Form["password"]; // שולף מהטופס את מה שהמשתמש הקליד בשדה הסיסמה ומכניס למשתנה password
 
             if (email == "adiMenahelet2210@gmail.com" && password == "adi2010") // האם הפרטים שהוקלדו תואמים בדיוק לפרטי המנהלת
-            { // פתיחת הבלוק עבור כניסת מנהל
+            { 
                 Session["name"] = "עדי המנהלת"; // שומר משתנה סשן גלובלי שמחזיק את השם של המנהלת כדי להציג אותו ברחבי האתר
                 Session["nihol"] = "ok"; // שומר משתנה סשן שמסמן שהמשתמש הנוכחי הוא מנהל, לצורך הרשאות גישה לדפים חסומים
                 Response.Redirect("menahel.aspx"); // מעביר (מנתב) את הדפדפן של המנהלת באופן אוטומטי לדף הניהול הסגור
-            } // סגירת הבלוק של כניסת מנהל
+            } 
 
             else // בלוק else שיתבצע במידה והפרטים שהוקלדו הם לא של המנהלת (כלומר, מדובר במשתמש רגיל או אורח)
-            { // פתיחת בלוק הטיפול במשתמש רגיל
+            { 
                 string sqlSelect = "SELECT * FROM tUsers " + "WHERE email = N'" + email + "' " + "AND pasword = N'" + password + "'"; // בונה שאילתת SQL לבדיקה האם קיים בטבלת המשתמשים (tUsers) משתמש עם המייל והסיסמה שהוקלדו (ה-N מיועד לתמיכה בעברית)
 
                 System.Data.DataTable dt = MyAdoHelper.ExecuteDataTable(sqlSelect); // שולח את השאילתה למסד הנתונים בעזרת מחלקת העזר ומקבל את התוצאה לתוך אובייקט טבלה בזיכרון (DataTable)

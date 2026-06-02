@@ -34,7 +34,7 @@
 
         <%-- קובייה 3: דרום אמריקה --%>
         <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: right;"> <% /* כרטיסיית דרום אמריקה בעיצוב אחיד */ %>
-            <img src="imges/South_America.png" alt="דרום אמריקה" style="width: 100%; height: 200px; object-fit: cover;" /> <% /* תמונת כרטיסיית דרום אמריקה */ %>
+            <img src="imges/South_America1  .png" alt="דרום אמריקה" style="width: 100%; height: 200px; object-fit: cover;" /> <% /* תמונת כרטיסיית דרום אמריקה */ %>
             <div style="padding: 20px;"> <% /* תיבת תוכן פנימית למרווח סביב הטקסט של דרום אמריקה */ %>
                 <h3 style="color: #01579b; margin: 0 0 10px 0; font-size: 22px;">דרום אמריקה 🌴</h3> <% /* כותרת הכרטיסייה של דרום אמריקה */ %>
                 <p style="color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.5;">חופים טרופיים מטורפים, הקרנבל בברזיל, טרקים מטורפים בנופים של פרו ותרבות לטינית קצבית.</p> <% /* פסקת תיאור קצרה על מאפייני דרום אמריקה */ %>
