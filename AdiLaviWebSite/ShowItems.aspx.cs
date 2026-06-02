@@ -43,10 +43,9 @@ public partial class ShowItems : System.Web.UI.Page
                 printString += "</tr>"; // מוסיף תגית סגירה לשורת הכותרת של הטבלה
 
                 for (int i = 0; i < dt.Rows.Count; i++) // לולאה הרצה כמספר השורות (הפריטים) שחזרו ממסד הנתונים כדי למלא את הטבלה בנתונים
-                { // פתיחת בלוק לולאת השורות
-                    string bgColor = (i % 2 == 0) ? "#f9f9f9" : "#ffffff"; // קובע משתנה לצבע רקע מתחלף: אם אינדקס השורה זוגי הרקע יהיה אפרפר בהיר, ואם אי-זוגי הרקע יהיה לבן (אפקט זברה לקריאות)
+                { 
 
-                    printString += "<tr style='background-color: " + bgColor + "; border-bottom: 1px solid #ddd;'>"; // מוסיף שורת נתונים חדשה לטבלה ומציב לה את צבע הרקע הדינמי שחושב ומסגרת תחתית אפורה עדינה
+                    printString += "<tr style='background-color: " + "#f9f9f9" + "; border-bottom: 1px solid #ddd;'>"; // מוסיף שורת נתונים חדשה לטבלה ומציב לה את צבע הרקע הדינמי שחושב ומסגרת תחתית אפורה עדינה
                     printString += "<td style='padding: 10px; color: #666;'>" + dt.Rows[i]["Id"] + "</td>"; // שולף את ערך עמודת ה-Id מהשורה ה-i בטבלה, משרשר אותו לתוך תא (td) מעוצב באפור ומציב בטבלה
                     printString += "<td style='padding: 10px; font-weight: bold; color: #01579b;'>" + dt.Rows[i]["itemName"] + "</td>"; // שולף את שם הפריט מהשורה ה-i, ומשרשר לתוך תא מודגש בצבע כחול
                     printString += "<td style='padding: 10px; color: #444;'>" + dt.Rows[i]["itemDescription"] + "</td>"; // שולף את תיאור הפריט מהשורה ה-i, ומשרשר לתוך תא בצבע אפור כהה
